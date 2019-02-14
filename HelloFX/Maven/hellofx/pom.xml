@@ -7,11 +7,24 @@
   <version>1.0-SNAPSHOT</version>
   <name>demo</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>11.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.open-dis</groupId>
+      <artifactId>open-dis-java</artifactId>
+      <version>bd0047169062ff0e06207c8ec6fc25447a3be992</version>
+      <!-- <version>master-09f96967e7-1</version> -->
+      <!-- <version>bb549e2a783a78b0e3bf6d6f5d77592d77a99081</version> -->
     </dependency>
   </dependencies>
   <build>
@@ -31,12 +44,21 @@
         <executions>
           <execution>
             <goals>
-              <goal>java</goal>
+              <goal>exec</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
-          <mainClass>HelloFX</mainClass>
+	  <executable>java</executable>
+	  <arguments>
+            <argument>-classpath</argument>
+	    <classpath/>
+	    <argument>--module-path</argument>
+	    <modulepath/>
+	    <argument>--add-modules</argument>
+	    <argument>javafx.controls</argument>
+	    <argument>HelloFX</argument>
+	  </arguments>
         </configuration>
       </plugin>
     </plugins>
